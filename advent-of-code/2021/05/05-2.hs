@@ -18,9 +18,6 @@ straight pair = vertical pair || horizontal pair
 visitPoint :: Point -> Grid -> Grid
 visitPoint p = Map.insertWith (+) p 1
 
-visitPoint' :: Grid -> Point -> Grid
-visitPoint' g p = Map.insertWith (+) p 1 g
-
 toPoint :: String -> Point
 toPoint s =
   let coordinates = splitOn "," s
