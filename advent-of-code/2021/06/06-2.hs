@@ -1,3 +1,5 @@
+-- Memoized version of the first part.
+
 import Data.List.Split(splitOn)
 import System.IO(readFile)
 
