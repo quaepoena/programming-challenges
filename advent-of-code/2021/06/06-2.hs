@@ -1,7 +1,7 @@
 import Data.List.Split(splitOn)
 import System.IO(readFile)
 
-import qualified Data.Map.Strict as memoizedFish :: Int -> Int
+memoizedFish :: Int -> Int
 memoizedFish = (map fish [0 ..] !!)
   where fish 0 = 1
         fish 1 = 1
