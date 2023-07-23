@@ -1,21 +1,25 @@
 import Data.List.Split(splitOn)
 import System.IO(readFile)
 
-advanceDay :: [Int] -> Int -> [Int]
-advanceDay acc days =
-  if days == 8 then acc ++ [6, 8]
-  else acc ++ [pred days]
+fish :: Int -> Int
+fish days
+  | days >= 9 = fish (days - 7) + fish (days - 9)
+  | days >= 7 = fish (days - 7) + 1
+  | otherwise = 1
 
--- https://stackoverflow.com/questions/73161840/run-a-function-a-certain-number-times-in-haskell
+fishWithCounter :: Int -> Int -> Int
+fishWithCounter days counter = fish (days + (6 - counter))
 
 main :: IO ()
 main = do
 
-  input <- readFile "input-test"
+  input <- readFile "input"
 
   let numbers = map (\ x -> read x :: Int)
               $ splitOn "," input
 
-  -- take 18 $ iterate (advanceDay []) numbers
+      days = 80
+      withCounter = fishWithCounter days
+      totalFish' = map withCounter numbers
 
-  print numbers
+  print $ sum totalFish
