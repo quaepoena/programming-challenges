@@ -1,9 +1,7 @@
 import Data.List.Split(splitOn)
 import System.IO(readFile)
 
-import qualified Data.Map.Strict as Map
-
-memoizedFish :: Int -> Int
+import qualified Data.Map.Strict as memoizedFish :: Int -> Int
 memoizedFish = (map fish [0 ..] !!)
   where fish 0 = 1
         fish 1 = 1
@@ -29,7 +27,6 @@ main = do
 
       days = 256
       withCounter = fishWithCounter days
-      totals = foldl (\ acc x -> Map.insert x (withCounter x) acc) Map.empty [0..6]
-      totalFish = map (\ x -> totals Map.! x) numbers
+      totalFish = map withCounter numbers
 
   print $ sum totalFish
