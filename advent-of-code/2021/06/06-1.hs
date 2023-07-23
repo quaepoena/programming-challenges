@@ -20,6 +20,6 @@ main = do
 
       days = 80
       withCounter = fishWithCounter days
-      totalFish' = map withCounter numbers
+      totalFish = map withCounter numbers
 
   print $ sum totalFish

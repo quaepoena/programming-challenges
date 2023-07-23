@@ -26,7 +26,6 @@ main = do
               $ splitOn "," input
 
       days = 256
-      withCounter = fishWithCounter days
-      totalFish = map withCounter numbers
+      totalFish = map (\ x -> fishWithCounter days x) numbers
 
   print $ sum totalFish
