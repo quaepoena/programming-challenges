@@ -3,12 +3,10 @@ import Data.List.Split(splitOn)
 import System.IO(readFile)
 
 ergebnis :: Int -> [Int] -> Int
-ergebnis ziel zahlen = sum $ map (\ x -> krabbemotorkraftstoffaufwand (abs (ziel - x))) zahlen
+ergebnis ziel zahlen = sum $ map (\ x -> krabbemotorkraftstoffaufwand ((abs (ziel - x)) + 1)) zahlen
 
 krabbemotorkraftstoffaufwand :: Int -> Int
-krabbemotorkraftstoffaufwand = (map kraftstoffaufwand [0..] !!)
-  where kraftstoffaufwand 0 = 0
-        kraftstoffaufwand n = n + kraftstoffaufwand (n - 1)
+krabbemotorkraftstoffaufwand n = n * (n - 1) `div` 2
 
 main :: IO ()
 main = do
