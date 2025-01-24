@@ -10,6 +10,7 @@ amicDivisors' x y n
   | n `mod` x == 0 = [x] ++ amicDivisors' (x + 1) (n `quot` x) n ++ [n `quot` x]
   | otherwise = amicDivisors' (x + 1) y n
 
+-- Return True if x is part of an amicable pair.
 amicPar :: Int -> Bool
 amicPar x =
   let sumAmic z = sum $ amicDivisors z
