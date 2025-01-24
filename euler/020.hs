@@ -7,13 +7,15 @@ intToList :: Integer -> [Integer]
 intToList = intToList' 1
 
 intToList' :: Integer -> Integer -> [Integer]
-intToList' exp x
-  | base > x = [curr]
-  | exp == 1 = intToList' (exp + 1) (x - rem) ++ [rem]
-  | otherwise = intToList' (exp + 1) (x - rem) ++ [curr]
-  where base = 10 ^ exp
-        rem = x `mod` base
-        curr = rem `div` (10 ^ (exp - 1))
-        next = x - rem
+intToList' x y
+  | base > y = [curr]
+  | x == 1 = intToList' (x + 1) next ++ [remainder]
+  | otherwise = intToList' (x + 1) next ++ [curr]
+  where base = 10 ^ x
+        remainder = y `mod` base
+        curr = remainder `div` (10 ^ (x - 1))
+        next = y - remainder
 
--- λ> sum . intToList $ fac 100
+main :: IO ()
+main = do
+  print $ sum . intToList $ fac 100
